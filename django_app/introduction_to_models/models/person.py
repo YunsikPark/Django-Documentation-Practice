@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 class Person(models.Model):
     SHIRT_SIZES = (
         ('S', 'Small'),
@@ -31,34 +30,6 @@ class Person(models.Model):
         max_length=1,
         choices=SHIRT_SIZES,
         help_text='남자는 L쓰세요',
-    )
-
-    def __str__(self):
-        return self.name
-
-
-# INSTALLED_APPS에 이 모델이 속하는 app 추가
-# makemigrations로 migrations생성
-# migrate로 migration을 적용
-# admin.py에 Person클래스 등록
-# createsuperuser로 슈퍼유저 계정 생성
-# runserver 후 admin접속해서 Person객체 생성 및 저장해보기
-
-
-class ManuFacturer(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
-
-
-class Car(models.Model):
-    name = models.CharField(max_length=40)
-    manufacturer = models.ForeignKey(
-        # ManuFacturer,
-        # 'myapp.ManuFacturer',
-        'Manufacturer',
-        on_delete=models.CASCADE,
     )
 
     def __str__(self):
